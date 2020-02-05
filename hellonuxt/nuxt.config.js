@@ -24,7 +24,7 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
-    extend (config, { isDev, isClient }) {
+    extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
           enforce: 'pre',
@@ -34,6 +34,20 @@ module.exports = {
         })
       }
     }
+  },
+  router: {
+    extendRoutes(routes, resolve) {
+      let index = routes.findIndex(route => route.name === 'index')
+      routes[index] = {
+        ...routes[index],
+        components: {
+          default: routes[index].component,
+          header: resolve(__dirname, 'components/mainHeader.vue')
+        },
+        chunkNames: {
+          header: 'components/mainHeader'
+        }
+      }
+    }
   }
 }
-
