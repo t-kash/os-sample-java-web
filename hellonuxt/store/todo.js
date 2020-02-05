@@ -3,20 +3,25 @@ export const state = () => ({
 })
 
 export const mutations = {
-    add : (state, text) => {
+    add: (state, text) => {
         state.todoList.push({
             text,
             done: false
         })
     },
-    delete : (state, { todo }) => {
-        state.todoList.splice(getTodoIndex(state, todo), 1)
-
-        getTodoIndex : (state, todo) => {
-            return state.todoList.indexOf(todo)
-        }
+    delete: (state, todo) => {
+        state.todoList.splice(local.getTodoIndex(state, todo), 1)
     },
-    toggle : (state, todo) => {
+    deleteAll: (state) => {
+        state.todoList = []
+    },
+    toggle: (state, todo) => {
         todo.done = !todo.done
+    }
+}
+
+const local = {
+    getTodoIndex: (state, todo) => {
+        return state.todoList.indexOf(todo)
     }
 }

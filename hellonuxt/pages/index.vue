@@ -8,6 +8,7 @@
         <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
         <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
       </div>
+      <h3 class="message">{{message}}</h3>
     </div>
   </section>
 </template>
@@ -18,6 +19,23 @@ import AppLogo from "~/components/AppLogo.vue";
 export default {
   components: {
     AppLogo
+  },
+  // async asyncData(context) {
+  //   return { message: "asyncData呼出動作確認" };
+  // }
+  asyncData(context) {
+    return new Promise((resolve, reject) => {
+      // 通信したつもり
+      let resultFormAPI = "asyncData呼出動作確認";
+      // resolve(resultFormAPI);
+      reject();
+    })
+      .then(result => {
+        return { message: result };
+      })
+      .catch(e => {
+        return { message: "asyncData呼出動作確認(API通信不安定)" };
+      });
   }
 };
 </script>
@@ -45,6 +63,14 @@ export default {
   font-weight: 300;
   font-size: 42px;
   color: #526488;
+  word-spacing: 5px;
+  padding-bottom: 15px;
+}
+
+.message {
+  font-weight: 300;
+  font-size: 16px;
+  color: #3d218b;
   word-spacing: 5px;
   padding-bottom: 15px;
 }

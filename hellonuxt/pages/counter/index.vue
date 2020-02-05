@@ -3,7 +3,7 @@
     <div>
       <h1>ようこすだよ</h1>
       <p>{{count}}回目のカウントアップだよ</p>
-      <button @click="addCount">カウントアップ</button>
+      <button class="button--green" @click="addCount">カウントアップ</button>
     </div>
   </section>
 </template>
