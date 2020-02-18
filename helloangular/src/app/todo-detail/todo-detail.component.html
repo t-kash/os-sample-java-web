@@ -1,0 +1,3 @@
+<span *ngIf="todo && isShowDetail()"> RegistDate:{{todo.detail.registDate | date:"yy/MM/dd HH:mm"}},
+    UpdateDate:{{todo.detail.updateDate | date:"yy/MM/dd HH:mm"}}</span>
+<button [ngClass]="'button--green'" (click)="showDetail()">detail</button>

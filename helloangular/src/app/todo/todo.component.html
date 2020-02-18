@@ -1,0 +1,22 @@
+<h2>TODO</h2>
+<div>
+    <ul>
+        <li *ngFor="let todo of todoList.todos">
+            <input type="checkbox" [checked]="todo.done" (change)="toggleTodo(todo)">
+            <span *ngIf="!isInputMode(todo)" [ngClass]="{done: todo.done}"
+                (dblclick)="switchMode(todo)">{{todo.text}}</span>
+            <input *ngIf="isInputMode(todo)" type="text" [(ngModel)]="todo.text" #modifyinput
+                (keyup.enter)="modifyTodo(todo, modifyinput)">
+            <app-todo-detail [_todo]="todo"></app-todo-detail>
+            <!-- span *ngIf="isShowDetail(todo)"> RegistDate:{{todo.detail.registDate | date:"yy/MM/dd HH:mm"}},
+                UpdateDate:{{todo.detail.updateDate | date:"yy/MM/dd HH:mm"}}</span>
+            <button [ngClass]="'button--green'" (click)="showDetail(todo)">detail</button -->
+            <button [ngClass]="'button--green'" (click)="deleteTodo(todo)">del</button>
+        </li>
+        <li>
+            <input type="text" #input (keyup.enter)="addTodo(input)">
+        </li>
+    </ul>
+    <br />
+    <button [ngClass]="'button--grey'" (click)="deleteAllTodo()">delAll</button>
+</div>
