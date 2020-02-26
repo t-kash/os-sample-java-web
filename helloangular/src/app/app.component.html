@@ -314,12 +314,25 @@
 <div class="content" role="main">
 
   <h1>{{title}}</h1>
+  <nav>
+    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+    <br />
+    <a routerLink="/hello" routerLinkActive="active">hello</a>
+    <br />
+    <a routerLink="/counter" routerLinkActive="active">counter</a>
+    <br />
+    <a routerLink="/todo" routerLinkActive="active">TODO</a>
+  </nav>
+  <router-outlet></router-outlet>
+  <app-messages></app-messages>
+  <br />
+  <!-- br />
   <app-hello></app-hello>
   <br />
   <app-counter></app-counter>
   <br />
   <app-todo></app-todo>
-  <br />
+  <br / -->
 
   <!-- Highlight Card -->
   <div class="card highlight-card card-small">
@@ -602,7 +615,3 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
-
-
-<router-outlet></router-outlet>

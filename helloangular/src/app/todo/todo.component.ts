@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Todos, Todo } from './todos';
+import { TodosService } from '../todos.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-todo',
@@ -10,11 +12,12 @@ export class TodoComponent implements OnInit {
 
   private _todoList: Todos;
 
-  constructor() { }
+  constructor(private _todosService: TodosService, private _messageService: MessageService) { }
 
   ngOnInit(): void {
-    this._todoList = new Todos();
-    this._todoList.add('plz fix me!!');
+    // this._todoList = new Todos();
+    // this._todoList.add('plz fix me!!');
+    this._todosService.getTodos().subscribe(todos => this._todoList = new Todos(todos));
   }
 
   toggleTodo(todo: Todo): void {
@@ -59,6 +62,7 @@ export class TodoComponent implements OnInit {
   }
 
   deleteAllTodo(): void {
+    this._messageService.add('delete all todos.');
     this.log(() => 'called deleteAllTodo.');
     this._todoList.deleteAll();
   }

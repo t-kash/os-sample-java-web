@@ -1,6 +1,10 @@
 export class Todos {
     private _todos: Array<Todo> = new Array<Todo>();
 
+    constructor(todoArray: Todo[]) {
+        this._todos = todoArray;
+    }
+
     add(text: string): void {
         this._todos.push(new Todo(text, false));
     }

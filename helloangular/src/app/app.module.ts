@@ -8,6 +8,9 @@ import { HelloComponent } from './hello/hello.component';
 import { CounterComponent } from './counter/counter.component';
 import { TodoComponent } from './todo/todo.component';
 import { TodoDetailComponent } from './todo-detail/todo-detail.component';
+import { MessagesComponent } from './messages/messages.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardTodoDetailComponent } from './dashboard-todo-detail/dashboard-todo-detail.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { TodoDetailComponent } from './todo-detail/todo-detail.component';
     HelloComponent,
     CounterComponent,
     TodoComponent,
-    TodoDetailComponent
+    TodoDetailComponent,
+    MessagesComponent,
+    DashboardComponent,
+    DashboardTodoDetailComponent
   ],
   imports: [
     BrowserModule,

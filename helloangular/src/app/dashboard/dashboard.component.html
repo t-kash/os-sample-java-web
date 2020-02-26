@@ -1,0 +1,10 @@
+<h3>Dashboard 1～5</h3>
+<div [ngClass]="'grid grid-pad'">
+    <ol>
+        <li [ngClass]="'col-1-5'" *ngFor="let todo of todoList.todos; index as i" routerLink="/detail/{{i}}">
+            <div [ngClass]="'module todo'">
+                <h4>{{todo.text}}</h4>
+            </div>
+        </li>
+    </ol>
+</div>
