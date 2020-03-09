@@ -17,11 +17,7 @@ export class DashboardTodoDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const index: number = +this._route.snapshot.paramMap.get('index');
-
-    let todoList: Todos = null;
-    this._todoService.getTodos().subscribe(todos => todoList = new Todos(todos))
-
-    this._todo = todoList.todos[index];
+    this._todoService.getTodos().subscribe(todos => this._todo = todos[index]);
   }
 
   get todo() {

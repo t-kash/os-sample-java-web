@@ -1,16 +1,18 @@
 export class Todos {
     private _todos: Array<Todo> = new Array<Todo>();
 
-    constructor(todoArray: Todo[]) {
-        this._todos = todoArray;
-    }
+    // constructor(todoArray: Todo[]) {
+    //     todoArray.forEach(todo => this._todos.push(todo));
+    // }
 
     add(text: string): void {
         this._todos.push(new Todo(text, false));
     }
 
     modify(todo: Todo, newText: string) {
-        this._todos[this.getTodoIndex(todo)].text = newText;
+        var target: Todo = this._todos[this.getTodoIndex(todo)];
+        target._text = newText;
+        target._detail._updateDate = new Date();
     }
 
     delete(todo: Todo): void {
@@ -22,7 +24,7 @@ export class Todos {
     }
 
     toggle(todo: Todo): void {
-        todo.done = !todo.done;
+        todo._done = !todo._done;
     }
 
     get todos() {
@@ -36,68 +38,24 @@ export class Todos {
 
 export class Todo {
 
-    private _inputMode: boolean = false;
-    private _detail: TodoDetail;
+    _inputMode: boolean = false;
+    _detail: TodoDetail = new TodoDetail();
+    _text: string;
+    _done: boolean;
 
-    constructor(private _text: string, private _done: boolean) {
-        this._detail = new TodoDetail(new Date());
-    }
-
-    get text() {
-        return this._text;
-    }
-
-    set text(text: string) {
+    constructor(text: string, done: boolean) {
         this._text = text;
-        this._detail.updateDate = new Date();
-    }
-
-    get done() {
-        return this._done;
-    }
-
-    set done(done: boolean) {
         this._done = done;
-    }
-
-    switchMode(): void {
-        this._inputMode = !this._inputMode;
-    }
-
-    isInputMode(): boolean {
-        return this._inputMode;
-    }
-
-    get detail() {
-        return this._detail;
     }
 }
 
 export class TodoDetail {
 
-    private _showDetail: boolean = false;
-    private _updateDate: Date;
+    _registDate: Date;
+    _showDetail: boolean = false;
+    _updateDate: Date;
 
-    constructor(private _registDate: Date) {
-    }
-
-    get registDate() {
-        return this._registDate;
-    }
-
-    get updateDate() {
-        return this._updateDate;
-    }
-
-    set updateDate(updateDate: Date) {
-        this._updateDate = updateDate;
-    }
-
-    showDetail(): void {
-        this._showDetail = !this._showDetail;
-    }
-
-    isShowDetail(): boolean {
-        return this._showDetail;
+    constructor() {
+        this._registDate = new Date();
     }
 }

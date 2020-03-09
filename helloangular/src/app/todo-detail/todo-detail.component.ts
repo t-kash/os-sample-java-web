@@ -22,11 +22,11 @@ export class TodoDetailComponent implements OnInit {
     return this._todo;
   }
 
-  showDetail(): void {
-    this._todo.detail.showDetail();
+  switchShowDetail(): void {
+    this._todo._detail._showDetail = !this._todo._detail._showDetail;
   }
 
   isShowDetail(): boolean {
-    return this._todo.detail.isShowDetail();
+    return this._todo._detail._showDetail;
   }
 }

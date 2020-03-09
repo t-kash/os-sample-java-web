@@ -9,14 +9,25 @@ import { TodosService } from '../todos.service';
 })
 export class DashboardComponent implements OnInit {
 
+  private _todoList: Todos;
+
   constructor(private _todosService: TodosService) { }
 
   ngOnInit(): void {
+    var todoList: Todos = new Todos();
+
+    this._todosService.getTodos().subscribe(todos => {
+      todos.slice(0, 5).forEach(todo => todoList.todos.push(todo));
+      todoList.todos.forEach(todo => console.log(todo._text + ", " + todo._inputMode));
+    });
+
+
+    todoList.todos.forEach(todo => console.log("Todo#text : " + todo._text));
+
+    this._todoList = todoList;
   }
 
   get todoList() {
-    var todoList: Todos;
-    this._todosService.getTodos().subscribe(todos => todoList = new Todos(todos.slice(0, 5)));
-    return todoList;
+    return this._todoList;
   }
 }

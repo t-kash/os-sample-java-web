@@ -2,10 +2,10 @@
 <div>
     <ul>
         <li *ngFor="let todo of todoList.todos">
-            <input type="checkbox" [checked]="todo.done" (change)="toggleTodo(todo)">
-            <span *ngIf="!isInputMode(todo)" [ngClass]="{done: todo.done}"
-                (dblclick)="switchMode(todo)">{{todo.text}}</span>
-            <input *ngIf="isInputMode(todo)" type="text" [(ngModel)]="todo.text" #modifyinput
+            <input type="checkbox" [checked]="todo._done" (change)="toggleTodo(todo)">
+            <span *ngIf="!isInputMode(todo)" [ngClass]="{done: todo._done}"
+                (dblclick)="switchMode(todo)">{{todo._text}}</span>
+            <input *ngIf="isInputMode(todo)" type="text" [(ngModel)]="todo._text" #modifyinput
                 (keyup.enter)="modifyTodo(todo, modifyinput)">
             <app-todo-detail [_todo]="todo"></app-todo-detail>
             <!-- span *ngIf="isShowDetail(todo)"> RegistDate:{{todo.detail.registDate | date:"yy/MM/dd HH:mm"}},

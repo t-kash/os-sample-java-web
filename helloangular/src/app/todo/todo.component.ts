@@ -17,11 +17,18 @@ export class TodoComponent implements OnInit {
   ngOnInit(): void {
     // this._todoList = new Todos();
     // this._todoList.add('plz fix me!!');
-    this._todosService.getTodos().subscribe(todos => this._todoList = new Todos(todos));
+
+    var todoList: Todos = new Todos();
+
+    this._todosService.getTodos().subscribe(todos => todos.forEach(todo => todoList.todos.push(todo)));
+
+    todoList.todos.forEach(todo => console.log("Todo#text : " + todo._text));
+
+    this._todoList = todoList;
   }
 
   toggleTodo(todo: Todo): void {
-    this.log(() => 'called toggleTodo. todo=' + todo.text);
+    this.log(() => 'called toggleTodo. todo=' + todo._text);
     this._todoList.toggle(todo);
   }
 
@@ -40,24 +47,25 @@ export class TodoComponent implements OnInit {
   }
 
   modifyTodo(todo: Todo, input: HTMLInputElement): void {
-    this.log(() => 'called modifyTodo. beforetodo=' + todo.text + ', newtodo=' + input.value);
+    this.log(() => 'called modifyTodo. beforetodo=' + todo._text + ', newtodo=' + input.value);
     this._todoList.modify(todo, input.value)
     input.value = '';
     this.switchMode(todo);
   }
 
   switchMode(todo: Todo): void {
-    this.log(() => 'called switchMode. currentInputMode=' + todo.isInputMode() + ', nextInputMode=' + !todo.isInputMode());
-    todo.switchMode();
+    this.log(() => 'called switchMode. currentInputMode=' + todo._inputMode + ', nextInputMode=' + !todo._inputMode);
+    todo._inputMode = !todo._inputMode;
   }
 
   isInputMode(todo: Todo): boolean {
-    this.log(() => 'called isInputMode. currentInputMode=' + todo.isInputMode());
-    return todo.isInputMode();
+    this.log(() => "Todo#text : " + todo._text);
+    this.log(() => 'called isInputMode. currentInputMode=' + todo._inputMode);
+    return todo._inputMode;
   }
 
   deleteTodo(todo: Todo): void {
-    this.log(() => 'called deleteTodo. todo=' + todo.text);
+    this.log(() => 'called deleteTodo. todo=' + todo._text);
     this._todoList.delete(todo);
   }
 

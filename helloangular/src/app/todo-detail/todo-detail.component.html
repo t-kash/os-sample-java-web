@@ -1,3 +1,3 @@
-<span *ngIf="todo && isShowDetail()"> RegistDate:{{todo.detail.registDate | date:"yy/MM/dd HH:mm"}},
-    UpdateDate:{{todo.detail.updateDate | date:"yy/MM/dd HH:mm"}}</span>
-<button [ngClass]="'button--green'" (click)="showDetail()">detail</button>
+<span *ngIf="todo && isShowDetail()"> RegistDate:{{todo._detail._registDate | date:"yy/MM/dd HH:mm"}},
+    UpdateDate:{{todo._detail._updateDate | date:"yy/MM/dd HH:mm"}}</span>
+<button [ngClass]="'button--green'" (click)="switchShowDetail()">detail</button>
