@@ -2,9 +2,13 @@ FROM node:lts-alpine as base
 
 MAINTAINER t-kash
 
-RUN git clone https://github.com/t-kash/os-sample-java-web.git
-
 WORKDIR helloangular
+
+RUN apk add git && git clone https://github.com/t-kash/os-sample-java-web.git
+
+WORKDIR os-sample-java-web/helloangular
+
+RUN npm install -g @angular/cli@9.0.1
 
 RUN npm install
 
@@ -16,6 +20,6 @@ RUN ng build --prod --output-path=./dist/build-by-docker
 
 FROM nginx:alpine as prod
 
-COPY --from=build ./dist/build-by-docker /usr/share/nginx/html
+COPY --from=build ./helloangular/os-sample-java-web/helloangular/dist/build-by-docker /usr/share/nginx/html
 
-COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY --from=build ./helloangular/os-sample-java-web/helloangular/default.conf /etc/nginx/conf.d/default.conf
