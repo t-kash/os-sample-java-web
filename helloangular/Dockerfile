@@ -20,6 +20,12 @@ RUN ng build --prod --output-path=./dist/build-by-docker
 
 FROM nginx:alpine as prod
 
+RUN chgrp -R 0 /usr/share/nginx && \
+   chmod -R g=u /usr/share/nginx
+
+RUN chgrp -R 0 /etc/nginx && \
+   chmod -R g=u /etc/nginx
+
 COPY --from=build ./helloangular/os-sample-java-web/helloangular/dist/build-by-docker /usr/share/nginx/html
 
 COPY --from=build ./helloangular/os-sample-java-web/helloangular/default.conf /etc/nginx/conf.d/default.conf
