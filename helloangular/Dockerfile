@@ -29,6 +29,9 @@ RUN chgrp -R 0 /etc/nginx && \
 RUN chgrp -R 0 /var/cache/nginx && \
    chmod -R g=u /var/cache/nginx
 
+RUN chgrp -R root /var/cache/nginx /var/run /var/log/nginx && \
+    chmod -R 770 /var/cache/nginx /var/run /var/log/nginx
+
 COPY --from=build ./helloangular/os-sample-java-web/helloangular/dist/build-by-docker /usr/share/nginx/html
 
 COPY --from=build ./helloangular/os-sample-java-web/helloangular/default.conf /etc/nginx/conf.d/default.conf
