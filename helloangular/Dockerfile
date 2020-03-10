@@ -26,9 +26,6 @@ RUN chgrp -R 0 /usr/share/nginx && \
 RUN chgrp -R 0 /etc/nginx && \
    chmod -R g=u /etc/nginx
 
-RUN chgrp -R 0 /var/cache/nginx && \
-   chmod -R g=u /var/cache/nginx
-
 RUN chgrp -R root /var/cache/nginx /var/run /var/log/nginx && \
     chmod -R 770 /var/cache/nginx /var/run /var/log/nginx
 
