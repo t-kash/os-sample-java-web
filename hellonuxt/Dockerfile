@@ -15,6 +15,8 @@ RUN npm install
 
 FROM base as build
 
+WORKDIR /hellonuxt/os-sample-java-web/hellonuxt
+
 RUN nuxt build -- --spa
 
 
