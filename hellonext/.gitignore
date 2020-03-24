@@ -1,0 +1,8 @@
+# dependencies
+/node_modules
+
+# Next build
+.next
+
+# Next generate
+dist
