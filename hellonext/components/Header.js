@@ -21,6 +21,9 @@ const Header = () => (
         <Link href="/batman-index">
             <a title="Batman" style={linkStyle}>Batman</a>
         </Link>
+        <Link href="/quotes">
+            <a title="Quotes" style={linkStyle}>Quotes</a>
+        </Link>
     </div>
 )
 
