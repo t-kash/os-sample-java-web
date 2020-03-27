@@ -6,19 +6,25 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next",
+    "dev2": "node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "export": "next export"
   },
   "author": "tkash",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.1",
     "https-proxy-agent": "^5.0.0",
     "isomorphic-unfetch": "^3.0.0",
     "net": "^1.0.2",
     "next": "^9.3.1",
+    "now": "^17.1.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-markdown": "^4.3.1",
+    "serve": "^11.3.0",
+    "swr": "^0.1.18",
     "tls": "0.0.1"
   }
 }
