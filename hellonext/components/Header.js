@@ -24,6 +24,15 @@ const Header = () => (
         <Link href="/quotes">
             <a title="Quotes" style={linkStyle}>Quotes</a>
         </Link>
+        <Link href="/counter">
+            <a title="Counter" style={linkStyle}>Counter</a>
+        </Link>
+        <Link href="/todo">
+            <a title="Todo" style={linkStyle}>Todo</a>
+        </Link>
+        <Link href="/hello">
+            <a title="Hello" style={linkStyle}>Hello</a>
+        </Link>
     </div>
 )
 

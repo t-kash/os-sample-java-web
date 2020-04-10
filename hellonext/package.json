@@ -23,8 +23,15 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-markdown": "^4.3.1",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-logger": "^3.0.6",
     "serve": "^11.3.0",
     "swr": "^0.1.18",
     "tls": "0.0.1"
+  },
+  "devDependencies": {
+    "create-next-app": "^9.3.2"
   }
 }
